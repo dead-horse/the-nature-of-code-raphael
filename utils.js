@@ -39,5 +39,17 @@
     return start2 + (stop2 - start2) * rate;
   };
 
+  utils.random = function (start, stop) {
+    if (typeof start !== 'number') {
+      return Math.random();
+    }
+
+    if (typeof stop !== 'number') {
+      return Math.random() * start;
+    }
+
+    return Math.random() * (stop - start) + start;
+  };
+
   exports.utils = utils;
 })(this);
