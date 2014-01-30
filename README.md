@@ -1,4 +1,4 @@
-The-Nature-of-Code-raphael.js
-=================================
+nature-of-code-raphael
+======================
 
-Port to raphael.js of Nature of Code examples
+port nature of code examples to raphael
