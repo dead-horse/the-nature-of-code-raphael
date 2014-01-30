@@ -1,8 +1,5 @@
 /*global PVector,utils*/
 
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
 (function (exports) {
 
   var Mover = function (width, height, paper) {
