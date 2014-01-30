@@ -5,13 +5,13 @@
 
   var path = paper.path();
   path.attr({
-    fill: '#fff',
-    stroke: '#fff'
+    fill: '#333',
+    stroke: '#333'
   });
 
   var rect = paper.rect(0, 0, 0, 10);
   rect.attr({
-    fill: '#fff',
+    fill: '#333',
     'stroke-width': 0
   });
 

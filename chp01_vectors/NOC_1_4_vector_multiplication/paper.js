@@ -5,8 +5,8 @@
 
   var path = paper.path();
   path.attr({
-    fill: '#fff',
-    stroke: '#fff'
+    fill: '#333',
+    stroke: '#333'
   });
 
   var center = new PVector(paper.width / 2, paper.height / 2);

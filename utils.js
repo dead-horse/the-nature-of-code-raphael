@@ -1,10 +1,18 @@
 /*global Raphael*/
 (function (exports) {
   var utils = {};
+
+  /**
+   * setup the raphael with $('#paper')
+   * @param {[type]} width [description]
+   * @param {[type]} height [description]
+   * @param {[type]} background [description]
+   * @return {[type]} [description]
+   */
   utils.setup = function (width, height, background) {
     width = width || 640;
     height = height || 320;
-    background = background || '#777';
+    background = background || '#eee';
     var container = $('#paper');
     container.width(width)
       .height(height)
@@ -13,6 +21,13 @@
     return paper;
   };
 
+  /**
+   * draw the page `frame` times per second. limit only draw `times` time
+   * @param {Number} frame
+   * @param {Number} times
+   * @param {Function} callback
+   * @return {Timer}
+   */
   utils.draw = function(frame, times, callback) {
     if (typeof frame === 'function') {
       callback = frame;
@@ -34,11 +49,26 @@
     }, 1000 / frame);
   };
 
+  /**
+   * map val from start1 ~ stop1 to start2 ~ stop2
+   * @param Number val
+   * @param Number start1
+   * @param Number stop1
+   * @param Number start2
+   * @param Number stop2
+   * @return Number
+   */
   utils.map = function (val, start1, stop1, start2, stop2) {
     var rate = (val - start1) / (stop1 - start1);
     return start2 + (stop2 - start2) * rate;
   };
 
+  /**
+   * get a random number from start to stop
+   * @param Number start
+   * @param Number stop
+   * @return Number
+   */
   utils.random = function (start, stop) {
     if (typeof start !== 'number') {
       return Math.random();
@@ -49,6 +79,28 @@
     }
 
     return Math.random() * (stop - start) + start;
+  };
+
+  /**
+   * translate 255, 255, 255 to #ffffff
+   * @param Number r
+   * @param Number g
+   * @param Number b
+   * @return String
+   */
+  utils.getColorString = function (r, g, b) {
+    if (typeof g !== 'number' || typeof b !== 'number') {
+      g = r;
+      b = r;
+    }
+    function toString16(r) {
+      var pad = '';
+      if (r < 16) {
+        pad = '0';
+      }
+      return pad + r.toString(16);
+    }
+    return '#' + toString16(r) + toString16(g) + toString16(b);
   };
 
   exports.utils = utils;

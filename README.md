@@ -5,9 +5,7 @@ port nature of code examples to raphael
 
 [Nature of code processing](https://github.com/shiffman/The-Nature-of-Code-Examples)
 
-## License
-
-## Licences
+## Licence
 (The MIT License)
 
 Copyright (c) 2014 dead-horse and other contributors

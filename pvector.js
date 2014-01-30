@@ -1,5 +1,9 @@
 (function (exports) {
   var PVector = function (x, y) {
+    if (!(this instanceof PVector)) {
+      return new PVector(x, y);
+    }
+
     this.x = x;
     this.y = y;
     return this;
@@ -25,10 +29,34 @@
     return new PVector(one.x - other.x, one.y - other.y);
   };
 
+  PVector.prototype.div = function (n) {
+    this.x /= n;
+    this.y /= n;
+    return this;
+  };
+
+  PVector.div = function (vector, n, target) {
+    if (target instanceof PVector) {
+      target.x = vector.x / n;
+      target.y = vector.y / n;
+      return target;
+    }
+    return new PVector(vector.x / n, vector.y / n);
+  };
+
   PVector.prototype.mult = function (rate) {
     this.x *= rate;
     this.y *= rate;
     return this;
+  };
+
+  PVector.mult = function (vector, n, target) {
+    if (target instanceof PVector) {
+      target.x = vector.x * n;
+      target.y = vector.y * n;
+      return target;
+    }
+    return new PVector(vector.x * n, vector.y * n);
   };
 
   PVector.prototype.mag = function () {
@@ -61,6 +89,10 @@
     this.x *= mag;
     this.y *= mag;
     return this;
+  };
+
+  PVector.prototype.clone = function () {
+    return new PVector(this.x, this.y);
   };
 
   PVector.random2D = function (vector) {
