@@ -11,7 +11,7 @@
    */
   utils.setup = function (width, height, background) {
     width = width || 640;
-    height = height || 320;
+    height = height || 360;
     background = background || '#eee';
     var container = $('#paper');
     container.width(width)
