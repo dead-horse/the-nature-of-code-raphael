@@ -107,5 +107,12 @@
     return vector;
   };
 
+  PVector.prototype.heading = function () {
+    if (this.x === 0) {
+      return Math.PI / 2;
+    }
+    return Math.atan(this.y / this.x);
+  };
+
   exports.PVector = PVector;
 })(this);

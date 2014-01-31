@@ -120,5 +120,18 @@
     return '#' + toString16(r) + toString16(g) + toString16(b);
   };
 
+  /**
+   * degree to radian
+   * @param {Number} degree
+   * @return {Number}
+   */
+  utils.radian = function (degree) {
+    return degree / 180 * Math.PI;
+  };
+
+  utils.degree = function (radian) {
+    return radian * 180 / Math.PI;
+  };
+
   exports.utils = utils;
 })(this);
