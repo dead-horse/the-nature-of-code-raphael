@@ -6,9 +6,7 @@ Port the nature of code examples to raphael
 * [The Nature of Code book online](http://natureofcode.com/)
 * [The Nature of Code examples in processing](https://github.com/shiffman/The-Nature-of-Code-Examples)
 
-## Raphael Online Demos
-
-[raphael online demos](http://deadhorse.me/the-nature-of-code-raphael/)
+## [raphael online demos](http://deadhorse.me/the-nature-of-code-raphael/)
 
 ## Licence
 (The MIT License)
