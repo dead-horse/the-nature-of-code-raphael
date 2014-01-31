@@ -1,9 +1,14 @@
-nature-of-code-raphael
+the-nature-of-code-raphael
 ======================
 
-port nature of code examples to raphael
+Port the nature of code examples to raphael
 
-[Nature of code processing](https://github.com/shiffman/The-Nature-of-Code-Examples)
+* [The Nature of Code book online](http://natureofcode.com/)
+* [The Nature of Code examples in processing](https://github.com/shiffman/The-Nature-of-Code-Examples)
+
+## Raphael Online Demos
+
+[raphael online demos](http://deadhorse.me/the-nature-of-code-raphael/)
 
 ## Licence
 (The MIT License)
