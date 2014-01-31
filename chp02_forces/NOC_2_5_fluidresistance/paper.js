@@ -15,6 +15,8 @@
     height: paper.height / 2
   }, 0.05, paper);
 
+  var t = paper.text(40, 20, "click to reset");
+
   utils.draw(60, function () {
     movers.forEach(function (mover) {
       if (liquid.contain(mover)) {
@@ -27,4 +29,15 @@
         .move();
     });
   });
+
+  paper.canvas.onmousedown = function () {
+    movers.forEach(function (mover) {
+      mover.destory();
+    });
+
+    movers = [];
+    for (var i = 0; i < 10; i++) {
+      movers.push(new Mover(utils.random(1, 4), utils.random(paper.width), 0, paper));
+    }
+  };
 })();

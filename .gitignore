@@ -3,3 +3,5 @@ build-tmp
 *.pde
 *.log
 *.log
+.
+DS_Store

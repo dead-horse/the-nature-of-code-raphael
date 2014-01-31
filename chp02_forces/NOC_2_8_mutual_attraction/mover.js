@@ -1,13 +1,14 @@
 /*global PVector,utils*/
 (function (exports) {
-  var Mover = function (mass, x, y, paper) {
+  var Mover = function (mass, location, velocity, paper) {
     this.width = paper.width;
     this.height = paper.height;
 
-    this.location = new PVector(x, y);
-    this.velocity = new PVector(0, 0);
+    this.location = location.clone();
+    this.velocity = velocity.clone();
     this.acceleration = new PVector(0,0);
     this.mass = mass;
+    this.G = 0.4;
 
     this.body = paper.ellipse(this.location.x, this.location.y,
       8 * mass, 8 * mass);
@@ -39,20 +40,12 @@
     return this;
   };
 
-  Mover.prototype.checkEdges = function () {
-    if (this.location.x > this.width) {
-      this.location.x = this.width;
-      this.velocity.x *= -1;
-    } else if (this.location.x < 0) {
-      this.velocity.x *= -1;
-      this.location.x = 0;
-    }
-
-    if (this.location.y > this.height) {
-      this.velocity.y *= -1;
-      this.location.y = this.height;
-    }
-    return this;
+  Mover.prototype.attract = function (mover) {
+    var f = PVector.sub(this.location, mover.location);
+    var d = utils.constrain(f.mag(), 5, 25);
+    var factor = this.G * this.mass * mover.mass / (d * d);
+    var force = f.normalize().mult(factor);
+    return force;
   };
 
   Mover.prototype.destory = function () {

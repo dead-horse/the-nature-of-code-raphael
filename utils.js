@@ -64,6 +64,23 @@
   };
 
   /**
+   * constrain start <= val <= end
+   * @param {Number} val
+   * @param {Number} start
+   * @param {Number} end
+   * @return {Number}
+   */
+  utils.constrain = function (val, start, end) {
+    if (val < start) {
+      return start;
+    }
+    if (val > end) {
+      return end;
+    }
+    return val;
+  };
+
+  /**
    * get a random number from start to stop
    * @param Number start
    * @param Number stop

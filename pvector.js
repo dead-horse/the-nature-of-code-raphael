@@ -68,6 +68,7 @@
     if (mag === 0) {
       this.x = 0;
       this.y = 0;
+      console.log('`````````');
     } else {
       this.x /= mag;
       this.y /= mag;
