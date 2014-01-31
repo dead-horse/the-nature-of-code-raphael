@@ -4,7 +4,7 @@
 
   var movers = [];
   for (var i = 0; i < 20; i++) {
-    movers.push(new Mover(utils.random(4, 12),
+    movers.push(new Mover(utils.random(8, 12),
       new PVector(utils.random(paper.width), utils.random(paper.height)),
       new PVector(0, 0), paper));
   }

@@ -52,21 +52,22 @@
   };
 
   Mover.prototype.checkEdges = function () {
-
-    if (this.location.x > this.width) {
-      this.location.x = this.width;
-      this.velocity.x *= -1;
-    } else if (this.location.x < 0) {
-      this.location.x = 0;
-      this.velocity.x *= -1;
+    var d = 50;
+    var boundary = new PVector(0, 0);
+    if (this.location.x > this.width - d) {
+      boundary.x = -2;
+      this.applyForce(boundary);
+    } else if (this.location.x < d) {
+      boundary.x = 2;
+      this.applyForce(boundary);
     }
 
-    if (this.location.y > this.height) {
-      this.location.y = this.height;
-      this.velocity.y *= -1;
-    } else if (this.location.y < 0) {
-      this.location.y = 0;
-      this.velocity.y *= -1;
+    if (this.location.y > this.height - d) {
+      boundary.y = -2;
+      this.applyForce(boundary);
+    } else if (this.location.y < d) {
+      boundary.y = 2;
+      this.applyForce(boundary);
     }
   };
 
