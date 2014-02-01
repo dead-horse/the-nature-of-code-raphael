@@ -421,3 +421,31 @@ Small Device Styles
   }
 
 }
+
+#demo {
+  width: 840px;
+  height: 600px;
+  padding: 20px;
+  position: fixed;
+  top: 30px;
+  left:50%;
+  margin-left: -420px;
+  background: #ffe;
+
+  z-index: 1000;
+  display: none;
+}
+
+#close {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  margin-left: 390px;
+  z-index: 2000;
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 30px;
+}
