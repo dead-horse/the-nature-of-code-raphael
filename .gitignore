@@ -4,3 +4,6 @@ build-tmp
 *.log
 *.log
 .DS_Store
+
+jquery.min.js
+raphael-min.js

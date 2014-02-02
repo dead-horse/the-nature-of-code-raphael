@@ -9,6 +9,10 @@
     return this;
   };
 
+  PVector.fromAngle = function (angle) {
+    return new PVector(Math.cos(angle), Math.sin(angle));
+  };
+
   PVector.prototype.set = function(x, y) {
     this.x = x || 0;
     this.y = y || 0;
@@ -115,6 +119,12 @@
   PVector.prototype.heading = function () {
     if (this.x === 0) {
       return Math.PI / 2;
+    }
+    var theta = Math.atan(this.y / this.x);
+    if (this.x > 0) {
+      return theta;
+    } else {
+      return Math.PI + theta;
     }
     return Math.atan(this.y / this.x);
   };
