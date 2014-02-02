@@ -9,6 +9,11 @@
     return this;
   };
 
+  PVector.prototype.set = function(x, y) {
+    this.x = x || 0;
+    this.y = y || 0;
+  };
+
   PVector.prototype.add = function (other) {
     this.x += other.x;
     this.y += other.y;
