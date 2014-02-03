@@ -21,5 +21,7 @@
       spaceship.turn(0.03);
       break;
     }
+    e.preventDefault();
+    e.stopPropagation();
   };
 })();

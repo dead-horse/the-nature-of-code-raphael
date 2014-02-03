@@ -12,7 +12,7 @@
     this.body = paper.ellipse(this.location.x, this.location.y, 24, 24);
 
     this.body.attr({
-      fill: '#eee',
+      fill: '#888',
       stroke: '#222'
     });
   };

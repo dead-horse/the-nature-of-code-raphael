@@ -110,6 +110,9 @@
       g = r;
       b = r;
     }
+    r = Math.floor(r);
+    g = Math.floor(g);
+    b = Math.floor(b);
     function toString16(r) {
       var pad = '';
       if (r < 16) {
