@@ -14,6 +14,7 @@
     iframe.load(function () {
       spinner.hide();
       iframe.show();
+      iframe.focus();
     });
   });
 
