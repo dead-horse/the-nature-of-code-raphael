@@ -6,8 +6,25 @@
     this.particles = [];
   };
 
-  ParticleSystem.prototype.add = function () {
+  ParticleSystem.prototype.setOrigin = function (x, y) {
+    this.origin.set(x, y);
+    return this;
+  };
+
+  ParticleSystem.prototype.add = function (x, y) {
+    if (x && y) {
+      this.particles.push(new Particle(new PVector(x, y), this.paper));
+      return this;
+    }
     this.particles.push(new Particle(this.origin, this.paper));
+    return this;
+  };
+
+  ParticleSystem.prototype.intersects = function () {
+    var self = this;
+    this.particles.forEach(function (p) {
+      p.intersects(self.particles);
+    });
     return this;
   };
 
@@ -19,21 +36,6 @@
         p.destroy();
         self.particles.splice(index, 1);
       }
-    });
-    return this;
-  };
-
-  ParticleSystem.prototype.applyForce = function (force) {
-    this.particles.forEach(function (p) {
-      p.applyForce(force);
-    });
-    return this;
-  };
-
-  ParticleSystem.prototype.applyRepeller = function (r) {
-    this.particles.forEach(function (p) {
-      var force = r.repel(p);
-      p.applyForce(force);
     });
     return this;
   };

@@ -72,6 +72,10 @@
     return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
   };
 
+  PVector.dist = function (loc1, loc2) {
+    return Math.sqrt(Math.pow(loc1.x - loc2.x, 2) + Math.pow(loc1.y - loc2.y, 2));
+  };
+
   PVector.prototype.normalize = function () {
     var mag = this.mag();
     if (mag === 0) {

@@ -1,9 +1,21 @@
 /* global Particle,PVector */
 (function (exports) {
-  var ParticleSystem = function (origin, paper) {
+  var rows = 20;
+  var cols = 20;
+  var ParticleSystem = function (origin, r, paper) {
     this.paper = paper;
     this.origin = origin.clone();
     this.particles = [];
+    for (var i = 0; i < rows * cols; i++) {
+      var p = new PVector(origin.x + (i % cols) * r,
+        origin.y + Math.floor(i / rows) * r);
+      this.particles.push(new Particle(p, r, paper));
+    }
+  };
+
+  ParticleSystem.prototype.setOrigin = function (x, y) {
+    this.origin.set(x, y);
+    return this;
   };
 
   ParticleSystem.prototype.add = function () {
@@ -23,19 +35,8 @@
     return this;
   };
 
-  ParticleSystem.prototype.applyForce = function (force) {
-    this.particles.forEach(function (p) {
-      p.applyForce(force);
-    });
-    return this;
-  };
-
-  ParticleSystem.prototype.applyRepeller = function (r) {
-    this.particles.forEach(function (p) {
-      var force = r.repel(p);
-      p.applyForce(force);
-    });
-    return this;
+  ParticleSystem.prototype.isDead = function () {
+    return !this.particles.length;
   };
 
   exports.ParticleSystem = ParticleSystem;

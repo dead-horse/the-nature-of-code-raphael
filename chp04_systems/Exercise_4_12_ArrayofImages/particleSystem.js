@@ -1,13 +1,20 @@
-/* global Particle,PVector */
+/* global Particle,PVector,utils */
 (function (exports) {
-  var ParticleSystem = function (origin, paper) {
+  var ParticleSystem = function (origin, imgs, paper) {
     this.paper = paper;
     this.origin = origin.clone();
     this.particles = [];
+    this.imgs = imgs;
+  };
+
+  ParticleSystem.prototype.setOrigin = function (x, y) {
+    this.origin.set(x, y);
+    return this;
   };
 
   ParticleSystem.prototype.add = function () {
-    this.particles.push(new Particle(this.origin, this.paper));
+    var index = Math.floor(utils.random(this.imgs.length));
+    this.particles.push(new Particle(this.origin, this.imgs[index], this.paper));
     return this;
   };
 
@@ -19,21 +26,6 @@
         p.destroy();
         self.particles.splice(index, 1);
       }
-    });
-    return this;
-  };
-
-  ParticleSystem.prototype.applyForce = function (force) {
-    this.particles.forEach(function (p) {
-      p.applyForce(force);
-    });
-    return this;
-  };
-
-  ParticleSystem.prototype.applyRepeller = function (r) {
-    this.particles.forEach(function (p) {
-      var force = r.repel(p);
-      p.applyForce(force);
     });
     return this;
   };
