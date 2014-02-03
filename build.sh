@@ -38,12 +38,9 @@ demoPaths.forEach(function (path) {
   demoByChp[chName][demoName] = path;
 });
 
-var templateUl = '<h3>{{chName}}</h3><ul>{{lis}}</ul>';
+var templateCh = '<h3>{{chName}}</h3>\n{{content}}';
 
-var templateLi = '<li><a class="demo-link" href="javascript:void(0);" data-link=' +
-  '"http://deadhorse.me/the-nature-of-code-raphael{{path}}/index.html">{{name}}</a> ' +
-  '(<a href="https://github.com/dead-horse/the-nature-of-code-raphael/tree/' +
-  'master{{path}}">source</a>)</li>\n';
+var templateCch = fs.readFileSync(path.join(root, 'demo.html'), 'utf-8');
 
 var html = '';
 
@@ -51,10 +48,10 @@ for(var chName in demoByChp) {
   var liHtml = '';
   var demos = demoByChp[chName];
   for (var name in demos) {
-    liHtml += templateLi.replace(/{{name}}/g, name).replace(/{{path}}/g, demos[name]);
+    liHtml += templateCch.replace(/{{name}}/g, name).replace(/{{path}}/g, demos[name]);
   }
 
-  html += templateUl.replace(/{{chName}}/g, chName).replace(/{{lis}}/g, liHtml);
+  html += templateCh.replace(/{{chName}}/g, chName).replace(/{{content}}/g, liHtml);
 }
 
 var tpl = fs.readFileSync(path.join(root, 'template.html'), 'utf-8');

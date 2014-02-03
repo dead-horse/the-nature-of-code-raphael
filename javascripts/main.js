@@ -2,24 +2,24 @@
   var demo = $('#demo');
   var closeBtn = $('#close');
   $('.demo-link').click(function () {
-    demo.attr('src', $(this).data('link'));
-    demo.show();
-    closeBtn.show();
+    var $this = $(this);
+    var link = $this.data('link');
+    var name = $this.data('name');
+
+    var spinner = $this.parents('.panel').find('.spinner');
+    spinner.show();
+
+    var iframe = $('#iframe-' + name);
+    iframe.attr('src', link);
+    iframe.load(function () {
+      spinner.hide();
+      iframe.show();
+    });
   });
 
-  document.body.onkeyup = function (e) {
-    console.log(e.keyCode);
-    if (e.keyCode === 27) {
-      demo.attr('src', '_blank');
-      closeBtn.hide();
-      demo.hide();
-    }
-  };
-
-  closeBtn.click(function () {
-    demo.attr('src', '_blank');
-    closeBtn.hide();
-    demo.hide();
+  $('#accordion').on('hide.bs.collapse', function (e) {
+    var iframe = $(e.target).find('iframe');
+    iframe.attr('src', '');
+    iframe.hide();
   });
-
 })();
