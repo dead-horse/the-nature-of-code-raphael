@@ -1,6 +1,6 @@
 /* global utils,PVector,Mover,Attractor */
 (function () {
-  var paper = utils.setup(800, 800);
+  var paper = utils.setup(640, 360);
 
   var movers = [];
   for (var i = 0; i < 20; i++) {
