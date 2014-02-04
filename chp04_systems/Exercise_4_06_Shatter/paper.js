@@ -1,6 +1,7 @@
 /* global utils,PVector,ParticleSystem */
 (function () {
   var paper = utils.setup();
+  paper.text(65, paper.height - 30, 'click mouse to start');
   var startLocation = new PVector(utils.random(100, 400), 50);
 
   var ps = new ParticleSystem(startLocation, 6, paper);
