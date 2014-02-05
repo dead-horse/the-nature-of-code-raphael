@@ -70,7 +70,7 @@
   // Seeding needs to be implemented
   // This is from: https://gist.github.com/leegrey/3253283
   // Based on: http://techcraft.codeplex.com/discussions/264014
-  /*
+
   Perlin.prototype.setSeed = function( seed ) {
     seed = seed || 1337;
     this.permutation = []; //make permutation unique between instances
@@ -92,10 +92,24 @@
       this.permutation[k] = l;
       this.permutation[i + 256] = this.permutation[i];
     }
-    for (var i=0; i < 256 ; i++) {
+    for (var i = 0; i < 256 ; i++) {
       this.p[256+i] = this.p[i] = this.permutation[i];
     }
-  }*/
+  };
+
+  var SeededRandomNumberGenerator = function (seed, m, n) {
+    if (!(this instanceof SeededRandomNumberGenerator)) {
+      return new SeededRandomNumberGenerator(seed, m, n);
+    }
+    this.m = m || 82947121839;
+    this.n = n || 328347242343;
+    this.r = seed || 1337;
+  };
+
+  SeededRandomNumberGenerator.prototype.randomIntRange = function (start, end) {
+    this.r = (this.r * this.n) % this.m;
+    return this.r % (start - end) + start;
+  };
 
   exports.Perlin = Perlin;
 })(this);
