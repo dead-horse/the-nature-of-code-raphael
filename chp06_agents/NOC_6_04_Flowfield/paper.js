@@ -25,6 +25,8 @@
     if (e.keyCode === 32) {
       f.switchVisiable();
     }
+    e.preventDefault();
+    e.stopPropagation();
   };
   paper.text(120, paper.height - 30,
     'Hit space bar to toggle debugging lines.\nClick the mouse to generate a new flow field.');
