@@ -103,12 +103,12 @@
     }
     this.m = m || 82947121839;
     this.n = n || 328347242343;
-    this.r = seed || 1337;
+    this.seed = seed || 1337;
   };
 
   SeededRandomNumberGenerator.prototype.randomIntRange = function (start, end) {
-    this.r = (this.r * this.n) % this.m;
-    return this.r % (start - end) + start;
+    this.seed = (this.seed * this.n) % this.m;
+    return this.seed % (start - end) + start;
   };
 
   exports.Perlin = Perlin;
