@@ -68,6 +68,14 @@
     return new PVector(vector.x * n, vector.y * n);
   };
 
+  PVector.prototype.dot = function (p) {
+    return this.x * p.x + this.y * p.y;
+  };
+
+  PVector.dot = function (a, b) {
+    return a.x * b.x + a.y * b.y;
+  };
+
   PVector.prototype.mag = function () {
     return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
   };
