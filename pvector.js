@@ -98,11 +98,12 @@
 
   PVector.prototype.limit = function (limit) {
     if (this.mag() <= limit) {
-      return;
+      return this;
     }
     this.normalize();
     this.x *= limit;
     this.y *= limit;
+    return this;
   };
 
   PVector.prototype.setMag = function (mag) {
@@ -130,7 +131,7 @@
 
   PVector.prototype.heading = function () {
     if (this.x === 0) {
-      return Math.PI / 2;
+      return this.y > 0 ? Math.PI / 2 : Math.PI / -2;
     }
     var theta = Math.atan(this.y / this.x);
     if (this.x > 0) {
@@ -139,6 +140,17 @@
       return Math.PI + theta;
     }
     return Math.atan(this.y / this.x);
+  };
+
+  PVector.angleBetween = function (a, b) {
+    // A dot B = (magnitude of A)*(magnitude of B)*cos(theta)
+    var dot = a.dot(b);
+    return Math.acos(dot / (a.mag() * b.mag()));
+  };
+
+  PVector.prototype.angleBetween = function (other) {
+    var dot = this.dot(other);
+    return Math.acos(dot / (this.mag() * other.mag()));
   };
 
   exports.PVector = PVector;
