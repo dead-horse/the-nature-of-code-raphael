@@ -15,19 +15,14 @@
     this._initBody();
   };
 
-  Vehicle.prototype._getPath = function () {
-    return 'M0 ' + (-this.r * 2) + 'L' + (-this.r) + ' ' +
-      (this.r * 2) + 'L' + this.r + ' ' + (this.r * 2) + 'Z';
-  };
-
   Vehicle.prototype._transform = function () {
-    this.line.transform('t' + this.location.x + ',' + this.location.y + 'r' +
-      utils.degree(this.velocity.heading() + Math.PI / 2));
+    this.body.transform('t' + this.location.x + ',' + this.location.y);
+    return this;
   };
 
   Vehicle.prototype._initBody = function () {
-    this.line = this.paper.path(this._getPath());
-    this.line.attr({fill: '#888', stroke: '#222'});
+    this.body = this.paper.circle(0, 0, this.r);
+    this.body.attr({fill: '#888', stroke: '#222'});
     this._transform();
     return this;
   };
