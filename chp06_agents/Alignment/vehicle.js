@@ -15,10 +15,6 @@
     this._initBody();
   };
 
-  Vehicle.prototype._getPath = function () {
-    return 'M0 ' + (-this.r * 2) + 'L' + (-this.r) + ' ' +
-      (this.r * 2) + 'L' + this.r + ' ' + (this.r * 2) + 'Z';
-  };
 
   Vehicle.prototype._transform = function () {
     this.body.transform('t' + this.location.x + ',' + this.location.y);
