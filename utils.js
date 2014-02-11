@@ -47,6 +47,11 @@
       }
       callback();
     }, 1000 / frame);
+    return timer;
+  };
+
+  utils.stopDraw = function (timer) {
+    clearInterval(timer);
   };
 
   /**
