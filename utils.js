@@ -153,5 +153,15 @@
     });
   };
 
+  utils.drawShape = function (paper, points) {
+    var path = 'M';
+    var pointPos = points.map(function (p) {
+      return p.x + ' ' + p.y;
+    });
+    path += pointPos.join('L');
+    path += 'Z';
+    return paper.path(path);
+  };
+
   exports.utils = utils;
 })(this);
