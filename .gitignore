@@ -4,6 +4,6 @@ build-tmp
 *.log
 *.log
 .DS_Store
-
+*.png
 jquery.min.js
 raphael-min.js
