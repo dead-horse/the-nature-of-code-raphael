@@ -1,7 +1,7 @@
 /*global Raphael*/
 (function (exports) {
   var utils = {};
-
+  var lastTimer = null;
   /**
    * setup the raphael with $('#paper')
    * @param {[type]} width [description]
@@ -38,7 +38,8 @@
       times = null;
     }
     if (!times) {
-      return setInterval(callback, 1000 / frame);
+      lastTimer = setInterval(callback, 1000 / frame);
+      return lastTimer;
     }
     var counter = 0;
     var timer = setInterval(function () {
@@ -47,11 +48,13 @@
       }
       callback();
     }, 1000 / frame);
+    lastTimer = timer;
     return timer;
   };
 
   utils.stopDraw = function (timer) {
-    clearInterval(timer);
+    timer = timer || lastTimer;
+    timer && clearInterval(timer);
   };
 
   /**
