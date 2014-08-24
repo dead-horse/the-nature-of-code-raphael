@@ -6,7 +6,7 @@
 // http://mrl.nyu.edu/~perlin/paper445.pdf
 
 module.exports = Perlin;
-x
+
 function Perlin() {
   this.p = [];
   for (var i=0; i < 256 ; i++) {

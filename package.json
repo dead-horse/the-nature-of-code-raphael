@@ -17,7 +17,8 @@
   "homepage": "https://github.com/dead-horse/the-nature-of-code-raphael",
   "dependencies": {
     "jquery": "~2.1.1",
-    "raphael": "~2.1.0"
+    "raphael": "~2.1.0",
+    "pvector": "~1.0.0"
   },
   "devDependencies": {
     "glob": "~4.0.5",

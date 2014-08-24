@@ -4,8 +4,10 @@ var rimraf = require('rimraf');
 var gulp = require('gulp');
 var glob = require('glob');
 var path = require('path');
+var fs = require('fs');
 
-var mains = glob.sync('./+(int*|chp*)/**/main.js').map(function (main) {
+// get all browserify entpoint file
+var mains = glob.sync('./+(int*|chp*)/*/main.js').map(function (main) {
   return main.slice(2);
 });
 
@@ -32,7 +34,7 @@ gulp.task('default', mains, function() {
 });
 
 // all watch task names
-var watchTasks = mains.forEach(function (main) {
+var watchTasks = mains.map(function (main) {
   return 'watch:' + main;
 });
 
@@ -41,7 +43,7 @@ var watchTasks = mains.forEach(function (main) {
 gulp.task('watch', watchTasks, function () {
   // watch js files in the root
   // once these files changed, need rebuild all
-  gulp.watch(['./*.js'], [mains]);
+  gulp.watch(['./utils.js'], [mains]);
 });
 
 // clean all bundles
@@ -51,3 +53,12 @@ gulp.task('clean', function () {
   });
 });
 
+gulp.task('init', function () {
+  var dirs = glob.sync('./+(int*|chp*)/*/');
+  dirs.forEach(function (dir) {
+    var main = path.join(dir, 'main.js');
+    if (!fs.existsSync(main)) {
+      fs.writeFileSync(main, '');
+    }
+  });
+});
