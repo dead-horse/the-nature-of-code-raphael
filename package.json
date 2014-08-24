@@ -1,0 +1,29 @@
+{
+  "name": "noc_raphael",
+  "version": "0.0.0",
+  "description": "the-nature-of-code-raphael",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dead-horse/the-nature-of-code-raphael.git"
+  },
+  "author": "dead_horse <dead_horse@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dead-horse/the-nature-of-code-raphael/issues"
+  },
+  "homepage": "https://github.com/dead-horse/the-nature-of-code-raphael",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "raphael": "~2.1.0"
+  },
+  "devDependencies": {
+    "glob": "~4.0.5",
+    "gulp": "~3.8.7",
+    "gulp-browserify": "~0.5.0",
+    "gulp-rename": "~1.2.0",
+    "rimraf": "~2.2.8"
+  }
+}

@@ -7,3 +7,4 @@ build-tmp
 *.png
 jquery.min.js
 raphael-min.js
+node_modules
