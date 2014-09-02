@@ -52,13 +52,3 @@ gulp.task('clean', function () {
     rimraf.sync(path.join(path.dirname(main), 'bundle.js'));
   });
 });
-
-gulp.task('init', function () {
-  var dirs = glob.sync('./+(int*|chp*)/*/');
-  dirs.forEach(function (dir) {
-    var main = path.join(dir, 'main.js');
-    if (!fs.existsSync(main)) {
-      fs.writeFileSync(main, '');
-    }
-  });
-});

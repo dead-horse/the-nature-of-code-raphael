@@ -1,5 +1,6 @@
 
 var utils = require('../../utils');
+var perlin = require('perlin');
 var Perlin = require('../../noise');
 module.exports = Walker;
 
@@ -17,12 +18,13 @@ function Walker(width, height, paper) {
   });
   this.perlin = new Perlin();
 }
-
+console.log(perlin)
 Walker.prototype.walk = function() {
-  this.x = utils.map(this.perlin.noise(this.noffX),
-    0, 1, 0, this.width);
-  this.y = utils.map(this.perlin.noise(this.noffY),
-    0, 1, 0, this.height);
+  perlin.noise.seed(10004);
+  var x = perlin.noise.perlin2(this.noffX, 0);
+  var y = perlin.noise.perlin2(this.noffY, 0);
+  this.x = utils.map(x, -0.5, 0.5, 0, this.width);
+  this.y = utils.map(y, -0.5, 0.5, 0, this.height);
   this.noffX += 0.01;
   this.noffY += 0.01;
   this.body.animate({
