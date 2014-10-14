@@ -1,6 +1,8 @@
 the-nature-of-code-raphael
 ======================
 
+___This project is under reconstruction now. You can check the `gh-pages` branch to see the code before.___
+
 Port the nature of code examples to raphael
 
 * [The Nature of Code book online](http://natureofcode.com/)
